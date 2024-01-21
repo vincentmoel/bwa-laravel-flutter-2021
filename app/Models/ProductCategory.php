@@ -15,4 +15,11 @@ class ProductCategory extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['name'] ?? false, function ($query, $name){
+            return $query->where('name', 'like', "%$name%");
+        });
+    }
 }
