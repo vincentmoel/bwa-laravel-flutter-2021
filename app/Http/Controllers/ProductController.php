@@ -16,7 +16,6 @@ class ProductController extends Controller
             200,
             "Success Index Product",
             $products
-
         );
     }
 
