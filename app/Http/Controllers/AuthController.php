@@ -28,4 +28,13 @@ class AuthController extends Controller
             $user
         );
     }
+
+    public function getAuthUser()
+    {
+        return ResponseFormatter::success(
+            401,
+            "Success Get Auth User",
+            auth()->user()
+        );
+    }
 }
