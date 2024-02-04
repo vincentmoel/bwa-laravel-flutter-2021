@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -24,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('products', ProductController::class)->only('index', 'show');
 Route::resource('categories', ProductCategoryController::class)->only('index', 'show');
-Route::resource('users', UserController::class);
+Route::post('register', [UserController::class, 'store']);
+Route::post('login', [AuthController::class, 'authenticate']);

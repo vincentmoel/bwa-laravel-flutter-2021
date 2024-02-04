@@ -20,7 +20,6 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
 
 
@@ -28,6 +27,7 @@ class User extends Authenticatable
     {
         parent::boot();
 
+        
         self::creating(function($model){
             $model->password    = Hash::make($model->password); 
         });

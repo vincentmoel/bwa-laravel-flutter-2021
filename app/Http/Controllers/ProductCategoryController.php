@@ -16,7 +16,6 @@ class ProductCategoryController extends Controller
             200,
             "Success Index Category",
             $categories
-
         );
     }
 
