@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('get-auth-user', [AuthController::class, 'getAuthUser']);
+    Route::put('update-profile', [AuthController::class, 'updateProfile']);
 });
 
 Route::resource('products', ProductController::class)->only('index', 'show');

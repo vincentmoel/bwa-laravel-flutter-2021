@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ResponseFormatter;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,19 @@ class AuthController extends Controller
             401,
             "Success Get Auth User",
             auth()->user()
+        );
+    }
+
+    public function updateProfile(UserRequest $request)
+    {
+        $user = User::find(auth()->user()->id);
+
+        $user->update($request->validated());
+
+        return ResponseFormatter::success(
+            200,
+            'Success Update Profile',
+            $user
         );
     }
 }
